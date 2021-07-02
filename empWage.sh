@@ -12,6 +12,8 @@ totalWorkingDays=0
 empRatePerHr=20
 numOfWorkingDays=20
 
+declare -A empDailyWage
+
 function getWorkingHrs(){
 	case $1 in
 		$IS_FULLTIME)
@@ -41,5 +43,6 @@ do
 	empDailyWage[$totalWorkingDays]="$( dailyWage $workHrs )"
 done
 wage=$(($totalEmpHrs*$empRatePerHr))
+echo "Day :: " ${!empDailyWage[@]}
 echo "DailyWage :: " ${empDailyWage[@]}
 echo "TotalWage :: " $wage
